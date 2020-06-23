@@ -14,7 +14,7 @@ const MONGODB_URI = `mongodb+srv://${config.db.user}:${config.db.pass}@${config.
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 5,
+  max: 10,
 })
 
 const app = express()
@@ -25,7 +25,7 @@ app.use(limiter)
 
 app.use(express.json())
 
-app.use('/url', urlRouter)
+app.use('/', urlRouter)
 
 app.use(notFound)
 app.use(errorHandler)

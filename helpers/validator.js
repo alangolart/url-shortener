@@ -6,6 +6,9 @@ const urlValidation = () => {
 const slugValidation = () => {
   return [body('slug').optional().isSlug()]
 }
+const slugParamValidation = () => {
+  return [param('slug').isSlug()]
+}
 const validate = (req, res, next) => {
   const errors = validationResult(req)
   if (errors.isEmpty()) {
@@ -21,5 +24,6 @@ const validate = (req, res, next) => {
 module.exports = {
   urlValidation,
   slugValidation,
+  slugParamValidation,
   validate,
 }
